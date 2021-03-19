@@ -1,3 +1,3 @@
-gachaType/*
-gachaTypeSrc/*
+gachaType/*.csv
+gachaTypeSrc/*.csv
 node_modules
