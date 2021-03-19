@@ -2,7 +2,7 @@ const fs = require("fs")
 const csv = require("csv")
 const yaml = require("js-yaml")
 
-const SrcPath = "../gatyaTypeSrc"
+const SrcPath = "../gachaTypeSrc"
 const CategoryFileName = "category.csv"
 const ItemFileName = "item.csv"
 const RequiredGachaFile = [CategoryFileName, ItemFileName]
