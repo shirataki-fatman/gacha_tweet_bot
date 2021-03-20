@@ -8,6 +8,7 @@ gachaTypeSrcというフォルダに作りたいガチャの名前でフォル�
 
 ```
 ./gachaTypeSrc
+├── gachaConfig.json
 └── hoge
     ├── category.csv
     └── item.csv
@@ -27,24 +28,27 @@ gachaTypeSrcというフォルダに作りたいガチャの名前でフォル�
 
 ### item.csv
 category.csvで設定したレアリティの中で排出されるアイテムを設定します。  
-ピックアップしているアイテムは3番目にtrueと入力するとその扱いになります（未実装）
 
 ```
-★★★,"ほげ",true
-★★,"ふが"
-★,"ぴよ"
+1,★★★,"ほげ"
+2,★★,"ふが"
+3,★,"ぴよ"
 ```
 
-### config.json(未実装)
+### gachaConfig.json
 コールされたときに何回分のガチャを回し、ラベルが設定されたガチャを何回目に使うかなどを設定できます。
 
 ```
 {
-    "gachaCount": 10,
-    "useGachaLabel": {
-        "10ren": 10
-    },
-    "pickupUpward": 3
+    "hoge": {
+        "gachaCount": 10,
+        "useGachaLabel": {
+            "10ren": 10
+        },
+        "pickupUpward": {
+            "1": 0.75
+        }
+    }
 }
 ```
 

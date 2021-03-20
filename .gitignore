@@ -1,3 +1,4 @@
 gachaType/*/*.yaml
+gachaTypeSrc/*.json
 gachaTypeSrc/*/*.csv
 node_modules
