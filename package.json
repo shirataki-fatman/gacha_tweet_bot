@@ -1,0 +1,25 @@
+{
+  "name": "gacha_tweet_bot",
+  "version": "1.0.0",
+  "description": "設定されたガチャデータをもとにガチャを実行するtwitter botです。  \r まだ作成途中なので動きません",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shirataki-fatman/gacha_tweet_bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shirataki-fatman/gacha_tweet_bot/issues"
+  },
+  "homepage": "https://github.com/shirataki-fatman/gacha_tweet_bot#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "js-yaml": "^4.0.0",
+    "mersenne": "0.0.4",
+    "weighted": "^0.3.0"
+  }
+}

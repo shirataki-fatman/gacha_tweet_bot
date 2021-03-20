@@ -65,9 +65,8 @@ async function saveCategory(dirName) {
             }
         
             const parseResult = []
-            data.forEach((element, index) => {
+            data.forEach((element) => {
                 parseResult.push({
-                    id: index,
                     name: `${element[0]}`,
                     weight: parseInt(element[1]),
                     label: `${element[2]}`
@@ -95,10 +94,8 @@ async function saveItem(dirName) {
     
             const parseResult = []
             data.forEach((element) => {
-                const categoryID = searchCategoryID(dirName, element[1])
                 parseResult.push({
                     id: element[0],
-                    categoryID: categoryID,
                     category: element[1],
                     name: element[2]
                 })
@@ -123,37 +120,32 @@ function checkConfigData(dirName) {
             throw "error."
         }
     })
-    Object.keys(gachaConfig.pickupUpward).forEach(itemID => {
-        const item = searchItem(dirName, itemID)
-        if (!item) {
-            throw "error."
-        }
-        const category = searchCategory(dirName, item.categoryID)
-        if (gachaConfig.pickupUpward[itemID] > category.weight) {
-            throw "error."
-        }
+    Object.keys(gachaConfig.pickupUpward).forEach(label => {
+        Object.keys(gachaConfig.pickupUpward[label]).forEach(itemID => {
+            const item = searchItem(dirName, itemID)
+            if (!item) {
+                throw "error."
+            }
+            const category = searchCategory(dirName, item.category, label)
+            if (gachaConfig.pickupUpward[itemID] > category.weight) {
+                throw "error."
+            }
+        })
     })
 
     const yamlText = yaml.dump(gachaConfig)
     saveYamlFile(dirName, OutputConfigFileName, yamlText)
 }
 
-function searchCategoryID(dirName, categoryName) {
-    const category = Categories[dirName]
-    let categoryID
-    category.forEach(c => {
-        if (c.name === categoryName && c.label === "") {
-            categoryID = c.id
-        }
-    })
-    return categoryID
-}
-
-function searchCategory(dirName, categoryID) {
+function searchCategory(dirName, categoryName, label = "") {
+    if (label === "default") {
+        label = ""
+    }
+    
     const categories = Categories[dirName]
     let category
     categories.forEach(c => {
-        if (c.id === categoryID) {
+        if (c.name === categoryName && c.label === label) {
             category = c
         }
     })
